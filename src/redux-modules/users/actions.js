@@ -7,9 +7,9 @@ import {
   SIGNUP_FAIL
 } from "./constants";
 
-export const logIn =  ()=> ({
-  type: LOGIN
-
+export const logIn = payload => ({
+  type: LOGIN,
+  payload
 });
 export const logInSuccess = payload => ({
   type: LOGIN_SUCCESS,

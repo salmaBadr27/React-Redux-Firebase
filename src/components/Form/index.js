@@ -3,39 +3,59 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import InputField from "../Input";
 import FormButton from "../Button";
-import { Heading } from "react-bulma-components/full";
 
 const MyForm = styled.div`
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 2rem;
+`;
+const FormLogin = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
   font-family: cursive;
   width: 100%;
 `;
+const Logo = styled.div`
+  font-family: "museo-slab";
+  font-size: 30px;
+  text-align: center;
+  padding: 20px 20px 0;
+  margin: 0;
+  color: #fff;
+`;
+
 const Form = props => (
-  <form id={props.id} onSubmit={props.onSubmit} name={props.name}>
-    {props.title && <Heading>{props.title}</Heading>}
+  <FormLogin id={props.id} onSubmit={props.onSubmit} name={props.name}>
+    {props.title && <Logo>{props.title}</Logo>}
+    <br />
     {props.fields.map(e => {
       return (
         <MyForm key={e.id}>
-          <label>{e.label}</label>
           <InputField {...e} />
         </MyForm>
       );
     })}
-    {props.id === "signup" ? (
-      <div>
-        <label className="subtitle">Teacher</label>
-        <input type="radio" value="teacher" name="selectType" />
-        <br />
-        <label className="subtitle">Student</label>
-        <input type="radio" value="student" name="selectType" />
-      </div>
-    ) : (
-      ""
-    )}
+    <div>
+      {props.id === "login" ? (
+        <div>
+          <div>
+            Teacher : <input type="radio" value="teacher" name="selectType" />
+          </div>
+          <div>
+            Student : <input type="radio" value="student" name="selectType" />
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+    </div>
     <FormButton>{props.label}</FormButton>
-  </form>
+    <br />
+  </FormLogin>
 );
 Form.propType = {
   id: PropTypes.string.isRequired,

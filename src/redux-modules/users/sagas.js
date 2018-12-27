@@ -1,31 +1,34 @@
 import { put, takeEvery, call } from "redux-saga/effects";
 import { logInFail, signUpFail, signUpSuccess, logInSuccess } from "./actions";
 import { LOGIN, SIGNUP } from "./constants";
-import firebase from "firebase";
 import {
-  usersRef,
-  reduxSagaFirebase
+  reduxSagaFirebase,
+  usersRef
 } from "../../components/Firebase/firebase.js";
-
-const authProvider = new firebase.auth.GoogleAuthProvider();
-export function* LogIn() {
+import AuthenticationError from "../../utils/handleError";
+export function* LogIn({ payload }) {
   try {
-    const data = yield call(
-      reduxSagaFirebase.auth.signInWithPopup,
-      authProvider
+    yield call(
+      reduxSagaFirebase.auth.signInWithEmailAndPassword,
+      payload.email,
+      payload.password
     );
-    console.log(data);
-    yield put(logInSuccess(data));
+    yield put(logInSuccess(payload));
   } catch (error) {
-    yield put(logInFail(error));
+    yield put(logInFail(AuthenticationError(error)));
   }
 }
 export function* signUp({ payload }) {
   try {
-    usersRef.push().set(payload);
-    yield put(signUpSuccess(payload));
+    const user = yield call(
+      reduxSagaFirebase.auth.createUserWithEmailAndPassword,
+      payload.email,
+      payload.password
+    );
+    yield put(signUpSuccess(user));
+    yield usersRef.push().set(payload);
   } catch (error) {
-    yield put(signUpFail(error));
+    yield put(signUpFail(AuthenticationError(error)));
   }
 }
 

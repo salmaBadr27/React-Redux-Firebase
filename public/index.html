@@ -4,14 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- <link
+    <link
       rel="stylesheet"
       type=" text/css"
       href="https://necolas.github.io/normalize.css/8.0.0/normalize.css"
-    /> -->
+    />
     <style>
       body {
-        background-image: linear-gradient(rosybrown, #fff);
+        /* Remember to use the other versions for IE 10 and older browsers! */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100%;
+        font-family: "lato", sans-serif;
+        color: #fff;
+        background: #222222;
+        background: #16222a; /* fallback for old browsers */
+        background: -webkit-linear-gradient(
+          to top,
+          #16222a,
+          #3a6073
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(
+          to top,
+          #16222a,
+          #3a6073
+        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
+      html {
+        height: 100%;
       }
     </style>
     <title>Login</title>

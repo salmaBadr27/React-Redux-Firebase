@@ -3,30 +3,27 @@ export const LoginFields = [
     id: "emailadd",
     type: "text",
     placeholder: "Email Address",
-    name: "userEmail",
-    label: "E-mail"
+    name: "userEmail"
+  },
+  {
+    id: "pass",
+    type: "password",
+    placeholder: "Password",
+    name: "pass"
   }
 ];
 export const SignUpFields = [
   {
-    id: "fname",
-    type: "text",
-    placeholder: "First Name",
-    name: "fname",
-    label: "First Name"
-  },
-  {
-    id: "lname",
-    type: "text",
-    placeholder: "Last Name",
-    name: "lname",
-    label: "Last Name"
-  },
-  {
     id: "email",
     type: "text",
     placeholder: "Email",
-    name: "email",
-    label: "E-mail"
+    name: "email"
+  },
+
+  {
+    id: "password",
+    type: "password",
+    placeholder: "Password",
+    name: "password"
   }
 ];

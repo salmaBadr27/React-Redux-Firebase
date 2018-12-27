@@ -1,13 +1,23 @@
 import React from "react";
 import { Button, Section } from "react-bulma-components/full";
 import { handleLogout } from "../LoginPage/helpers";
+import styled from "styled-components";
+
+const Heading = styled.div`
+  color: #fff;
+  font-size: 30px;
+`;
+const Paragraph = styled.p`
+  color: #fff;
+  font-size: 20px;
+`;
 
 class Teacher extends React.Component {
   render(props) {
     return (
       <Section>
-        <h1 className="title">Welcome to Teacher Component !</h1>
-        <p>
+        <Heading >Welcome to Teacher Component !</Heading>
+        <Paragraph>
           Contrary to popular belief, Lorem Ipsum is not simply random text. It
           has roots in a piece of classical Latin literature from 45 BC, making
           it over 2000 years old. Richard McClintock, a Latin professor at
@@ -24,7 +34,7 @@ class Teacher extends React.Component {
           1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also
           reproduced in their exact original form, accompanied by English
           versions from the 1914 translation by H. Rackham.
-        </p>
+        </Paragraph>
         <br />
         <Button
           size="large"

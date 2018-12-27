@@ -3,17 +3,10 @@ import urls from "../../routes";
 export const handleSignUp = (e, signUp) => {
   e.preventDefault();
   var newUser = {
-    fname: e.target.fname.value,
-    lname: e.target.lname.value,
     email: e.target.email.value,
-    type: e.target.selectType.value
+    password: e.target.password.value
   };
-  if (
-    newUser.fname === "" ||
-    newUser.lname === "" ||
-    newUser.email === "" ||
-    newUser.type === ""
-  ) {
+  if (newUser.email === "" || newUser.password === "") {
     alert("please fill the form correctly");
   } else {
     signUp(newUser);
@@ -24,16 +17,18 @@ export const handleLogin = (e, logIn) => {
   e.preventDefault();
   var user = {
     email: e.target.userEmail.value,
+    password: e.target.pass.value,
+    type: e.target.selectType.value
   };
-  if (user.email === "") {
+  if (user.email === "" || user.password === "" || user.type === "") {
     alert("please fill the form correctly");
   } else {
-    logIn();
+    logIn(user);
   }
 };
 export const handleLogout = history => {
-    if (localStorage.getItem("userType") ) {
-      localStorage.removeItem("userType");
-      history.push(urls.login);
-    }
-  };
+  if (localStorage.getItem("userType")) {
+    localStorage.removeItem("userType");
+    history.push(urls.login);
+  }
+};
